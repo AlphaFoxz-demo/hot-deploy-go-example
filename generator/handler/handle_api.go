@@ -44,12 +44,7 @@ func HandleApi(sourceDir string) {
 						// 将字段名转换为字符串并打印
 						fieldNameStr := fieldName.Name
 						if strings.HasSuffix(fieldNameStr, "_") {
-							p, typeStr := getPackageAndType(field.Type)
-							if len(p) > 0 {
-								for _, v := range strings.Split(p, ",") {
-									importPackages[v] = true
-								}
-							}
+							_, typeStr := getPackageAndType(field.Type)
 							initFuncValues = append(initFuncValues, commandStruct{
 								CommandType: "*" + typeSpec.Name.Name,
 								RepoType:    typeStr,

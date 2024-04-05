@@ -16,15 +16,14 @@ func (command *CheckInCommand) Handle() bool {
 	return result
 }
 
-type CheckOutCommand struct {
-	repo_         ParkingRepo
-	Plate         Plate
-	CheckedInTime time.Time
-}
-
+//type CheckOutCommand struct {
+//	repo_         ParkingRepo
+//	Plate         Plate
+//	CheckedInTime time.Time
+//}
 //
 //type NotifyPayCommand struct {
-//	repo_   *ParkingRepo
+//	repo_   ParkingRepo
 //	Plate   Plate
 //	Amount  int
 //	PayTime time.Time

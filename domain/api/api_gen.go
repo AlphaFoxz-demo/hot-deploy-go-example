@@ -21,10 +21,3 @@ func (inst_ api) NewCheckInCommand(Plate Plate, CheckedInTime time.Time) (v Chec
 	}
 	return *command.Init(inst_.repo_)
 }
-func (inst_ api) NewCheckOutCommand(Plate Plate, CheckedInTime time.Time) (v CheckOutCommand) {
-	command := CheckOutCommand{
-		Plate:         Plate,
-		CheckedInTime: CheckedInTime,
-	}
-	return *command.Init(inst_.repo_)
-}
