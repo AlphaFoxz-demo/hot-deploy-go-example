@@ -25,11 +25,6 @@ func NewWatcher(dir string) (*fsnotify.Watcher, error) {
 	return watcher, nil
 }
 
-//func getAllFiles(rootDir string) (*slicer.StringSlicer, error) {
-//	var result slicer.StringSlicer
-//
-//}
-
 func getSubdirectories(rootDir string) (*slicer.StringSlicer, error) {
 	var result slicer.StringSlicer
 

@@ -4,6 +4,8 @@ import (
 	"container/list"
 )
 
+//需要外部实现的功能
+
 type ParkingRepo interface {
 	FindById(id string) ParkingAgg
 }

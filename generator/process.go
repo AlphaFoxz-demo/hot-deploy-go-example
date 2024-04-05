@@ -2,7 +2,6 @@ package generator
 
 import (
 	_ "embed"
-	"fmt"
 	"github.com/AlphaFoxz/hot-deploy-go-example/generator/handler"
 	"github.com/AlphaFoxz/hot-deploy-go-example/generator/utils/customfs"
 	"github.com/AlphaFoxz/hot-deploy-go-example/generator/utils/logutils"
@@ -18,7 +17,7 @@ import (
 
 var extensionsToTriggerGen = make(map[string]bool)
 
-func Listen(sourceDir string, targetDir string) {
+func Listen(sourceDir string) {
 	extensionsToTriggerGen["go"] = true
 	watcher, err := NewWatcher(sourceDir)
 	if err != nil {
@@ -53,7 +52,7 @@ func Listen(sourceDir string, targetDir string) {
 		case item := <-watcher.Events:
 			if item.Op&fsnotify.Write == fsnotify.Write {
 				if checkEligibleFile(item.Name) {
-					fmt.Printf("file change detected: %s\n", item)
+					logutils.LogBlue("file change detected: %s", item)
 					needGen = true
 					timer.Reset(interval)
 					continue
@@ -86,6 +85,7 @@ func Listen(sourceDir string, targetDir string) {
 	}
 }
 
+// 检查文件名，_gen.go结尾的不再触发自动生成，否则死循环
 func checkEligibleFile(fileName string) bool {
 	if strings.HasSuffix(fileName, "_gen.go") {
 		return false

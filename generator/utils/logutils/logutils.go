@@ -28,3 +28,11 @@ func LogDarkYellow(message string, args ...interface{}) {
 	text := fmt.Sprintf(message, args...)
 	println(colour.DarkYellow(text))
 }
+
+func LogBlue(message string, args ...interface{}) {
+	if len(message) == 0 {
+		return
+	}
+	text := fmt.Sprintf(message, args...)
+	println(colour.Blue(text))
+}

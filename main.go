@@ -12,6 +12,7 @@ type RepoImpl struct {
 
 func (RepoImpl) FindById(id string) declare.ParkingAgg {
 	return declare.ParkingAgg{
+		//TODO EventQueue_未实现
 		EventQueue_: nil,
 		Id:          declare.Plate{Number: id},
 	}
@@ -22,5 +23,6 @@ func main() {
 	command := domainApi.NewCheckInCommand(declare.Plate{Number: "1"}, time.Now())
 	println(command.Handle())
 
-	generator.Listen("./domain", "./auto_source")
+	//启动代码生成守护进程
+	generator.Listen("./domain")
 }

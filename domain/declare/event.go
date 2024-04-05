@@ -1,6 +1,6 @@
 package declare
 
-//go:generate go run ../gen_event_listener.go
+//TODO event相关的代码生成待实现
 
 import (
 	"time"
